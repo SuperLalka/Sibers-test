@@ -22,6 +22,9 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     # Applications
     'newsline',
+    # Third party modules
+    'tinymce',
+    'crispy_forms',
 ]
 
 MIDDLEWARE = [
@@ -99,3 +102,11 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 
 STATIC_URL = '/static/'
+
+STATIC_ROOT = os.path.join(BASE_DIR, 'newsline/static')
+
+MEDIA_URL = '/media/'
+
+MEDIA_ROOT = os.path.join(BASE_DIR, 'newsline/media')
+
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
