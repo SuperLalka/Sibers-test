@@ -1,0 +1,18 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+  <header class="header">
+    <p class="header__time-now">today is {{ time_now }}</p>
+  </header>
+  <main class="main">
+    <div class="main__news-block">
+      <div class="main__news-list">
+        {% for news in news_list %}
+          {% include "news_detail.html" %}
+        {% endfor %}
+      </div>
+    </div>
+  </main>
+  <footer class="footer">
+  </footer>
+{% endblock %}

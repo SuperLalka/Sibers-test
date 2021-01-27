@@ -1,0 +1,11 @@
+<div class="main__news-item card">
+  <div class="card-header">
+    <h3 class="card-header__title">{{ news.header }}</h3>
+  </div>
+  <div class="card-body">
+    <p class="card-text">{{ news.text|safe }}</p>
+  </div>
+  <div class="card-footer">
+    {{ news.created_at }}
+  </div>
+</div>

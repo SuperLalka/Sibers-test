@@ -1,0 +1,89 @@
+@import url(//fonts.googleapis.com/css2?family=Comfortaa:wght@600&display=swap);
+
+body {
+    background-color: aliceblue;
+}
+
+.header {
+    background-image: url(//cdn.worldvectorlogo.com/logos/daily-news.svg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    border-bottom: 5px solid black;
+    min-height: 20vh;
+
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-end;
+}
+
+.header__time-now {
+    margin: 0 20px;
+    font-style: italic;
+}
+
+.main {
+    padding: 20px;
+}
+
+.main__news-block {
+    margin: auto;
+    max-width: 1400px;
+}
+
+.main__news-list {
+
+}
+
+.main__news-item {
+    margin-bottom: 5px;
+}
+
+.card {
+    border: 1px solid black;
+    border-radius: 25px;
+}
+
+.card-header {
+    background-color: brown;
+    border-top-left-radius: 25px!important;
+    border-top-right-radius: 25px!important;
+}
+
+.card-header__title {
+    color: white;
+    font-family: 'Comfortaa', cursive;
+    font-size: 30px;
+    margin: 0;
+    padding: 10px 0;
+}
+
+.card-body {
+
+}
+
+.card-footer {
+    text-align: end;
+}
+
+.footer {
+
+}
+
+.add-news-button {
+    background-color: #0000005c;
+    border: 2px solid white;
+    border-radius: 50%;
+    bottom: 0;
+    color: white;
+    height: 150px;
+    margin: 20px;
+    outline: none!important;
+    position: fixed;
+    right: 0;
+    width: 150px;
+}
+
+.add-news-button:hover {
+    background-color: black;
+}
