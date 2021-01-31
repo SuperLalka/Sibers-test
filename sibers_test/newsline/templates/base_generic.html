@@ -39,7 +39,7 @@
           </button>
         </div>
         <div class="modal-body">
-          <form class="feedback__form" id="feedback-form" method="post"
+          <form class="feedback__form" id="feedback-form" method="post" enctype="multipart/form-data"
                 action="{% url 'newsline:add-news' %}?next={{ request.path }}">
             {% csrf_token %}
             {{ new_news_form|crispy }}

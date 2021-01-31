@@ -5,14 +5,44 @@
     <p class="header__time-now">today is {{ time_now }}</p>
   </header>
   <main class="main">
+    <div class="main__aside-block">
+      <a class="btn btn-outline-dark"
+         href="{% url 'newsline:change_pagination' 10 %}" role="button">10</a>
+      <a class="btn btn-outline-dark"
+         href="{% url 'newsline:change_pagination' 20 %}" role="button">20</a>
+      <a class="btn btn-outline-dark"
+         href="{% url 'newsline:change_pagination' 50 %}" role="button">50</a>
+    </div>
     <div class="main__news-block">
       <div class="main__news-list">
-        {% for news in news_list %}
+        {% for news in page_obj.object_list %}
           {% include "news_detail.html" %}
         {% endfor %}
       </div>
     </div>
   </main>
   <footer class="footer">
+    {% if is_paginated %}
+      <nav aria-label="Page navigation example">
+        <ul class="footer__pagination-block pagination">
+          {% if page_obj.has_previous %}
+            <li class="footer__pagination-item page-item">
+              <a class="page-link" href="{% url 'newsline:news' page_obj.previous_page_number %}">Previous</a>
+            </li>
+          {% endif %}
+          {% for page in paginator.page_range %}
+            <li class="footer__pagination-item page-item">
+              <a class="page-link {% if page_obj.number == page %}bg-info text-white{% endif %}"
+                 href="{% url 'newsline:news' page %}">{{ page }}</a>
+            </li>
+          {% endfor %}
+          {% if page_obj.has_next %}
+            <li class="footer__pagination-item page-item">
+              <a class="page-link" href="{% url 'newsline:news' page_obj.next_page_number %}">Next</a>
+            </li>
+          {% endif %}
+        </ul>
+      </nav>
+    {% endif %}
   </footer>
 {% endblock %}
