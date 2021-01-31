@@ -14,26 +14,24 @@ class NewsImagesForm(forms.ModelForm):
     image_5 = forms.ImageField(required=False)
 
     def save(self, *args, **kwargs):
-        super(NewsImagesForm, self).save(*args, **kwargs)
 
         if not self.instance.id:
-            news = News.objects.create(header=self.cleaned_data['header'],
-                                       text=self.cleaned_data['text'],
-                                       in_the_archive=self.cleaned_data['in_the_archive'])
+            news = News.objects.create(
+                header=self.cleaned_data['header'],
+                text=self.cleaned_data['text'],
+                type=self.cleaned_data['type'])
             news.save()
             self.instance = news
 
         for image in self.files:
-            if self.files[image].name not in self.instance.images.all():
-                # print(self.instance.images.all(), self.files[image].name)
-                image_obj, _ = Image.objects.get_or_create(
-                    name="photo_to_news_" + self.instance.header.replace(" ", "_"),
-                    filename=self.files[image].name,
-                    images=self.files[image]
-                )
-                self.instance.images.add(image_obj)
+            image_obj, _ = Image.objects.get_or_create(
+                name="photo_to_news_" + self.instance.header.replace(" ", "_"),
+                filename=self.files[image].name,
+                file=self.files[image],
+                for_news=self.instance
+            )
 
-        return self.instance
+        return super(NewsImagesForm, self).save(*args, **kwargs)
 
 
 @admin.register(News)
